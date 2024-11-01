@@ -1,0 +1,15 @@
+version: "3"
+
+tasks:
+  backend:
+    cmds:
+    - cd ./backend && task clean
+    - sh ./create-backend-link-for-single-distro.sh
+  frontend:
+    cmds:
+    - cd ./frontend && pnpm build
+    - sh ./create-frontend-link-for-single-distro.sh
+  sd:
+    cmds:
+    - task backend
+    - task frontend

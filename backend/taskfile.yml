@@ -1,0 +1,36 @@
+version: '3'
+
+tasks:
+  clean:
+    cmds:
+    - rm -f judge.log
+    - rm -f judge
+    - rm -f judge.db
+    - rm -rf tmp
+    - rm -rf example/repositories
+  build:
+    cmds:
+    - go build
+  cb:
+    cmds:
+    - task clean
+    - task build
+  cbr:
+    cmds:
+    - task cb
+    - ./judge
+  kc:
+    cmds:
+    - docker pull keycloak/keycloak
+    - |
+      docker run -d --name kc \
+        -p 8888:8080 \
+        -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
+        -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin \
+        keycloak/keycloak start-dev
+  ras:
+    cmds:
+    - openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+    - openssl rsa -pubout -in private_key.pem -out public_key.pem
+    - openssl pkcs8 -topk8 -inform PEM -outform DER -in private_key.pem -out private_key_pkcs8.der -nocrypt
+    - openssl base64 -in private_key_pkcs8.der -out private_key_pkcs8_base64.txt

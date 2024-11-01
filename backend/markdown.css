@@ -1,0 +1,84 @@
+/* Base styles and variable definitions */
+
+:root {
+    --background: #ffffff;
+    --foreground: #333333;
+    --link-color: #007bff;
+    --border-radius: 0.3rem;
+    
+    /* Colors for different types of content */
+    --card: #ffffff;
+    --card-foreground: #333333;
+    --primary: #0056b3;
+    --primary-foreground: #ffffff;
+    --secondary: #f5f5f5;
+    --secondary-foreground: #222222;
+
+    /* Font and spacing adjustments */
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode adjustments when body has .dark class */
+body.dark {
+    --background: #242424;
+    --foreground: rgba(255, 255, 255, 0.87);
+    --card: #333333;
+    --card-foreground: #f0f0f0;
+    --primary: #007bff;
+    --primary-foreground: #ffffff;
+    --secondary: #444444;
+    --secondary-foreground: #e0e0e0;
+}
+
+/* Applying the styles */
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+h1, h2, h3, p {
+    color: var(--foreground);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+button {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border-radius: var(--border-radius);
+}
+
+/* Components */
+.card {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+/* Utility classes */
+.border-rounded {
+    border-radius: var(--border-radius);
+}
+
+.bg-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+.bg-secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+}
+
+/* Tailored dark-mode color scheme */
+.color-scheme-light-dark {
+    color-scheme: light dark;
+}
