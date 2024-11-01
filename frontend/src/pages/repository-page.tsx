@@ -26,6 +26,7 @@ import {
   Circle,
   Clock,
   GitFork,
+  Library,
   Play,
   X,
 } from "lucide-react";
@@ -464,12 +465,12 @@ function Footer({
         </Button>
         <div>
           <Button onClick={handleRequestTest} variant="ghost">
-            <Play className="mr-2 h-4 w-4" /> Request Test Run For This Stage
+            <Play className="mr-2 h-4 w-4" /> Test Run For This Stage
           </Button>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button onClick={handleCopyGitUrl} variant="ghost">
-                <GitFork className="mr-2 h-4 w-4" /> Git URL
+                <GitFork className="mr-2 h-4 w-4" /> Copy Git URL
               </Button>
             </TooltipTrigger>
             <TooltipContent>
@@ -477,7 +478,7 @@ function Footer({
             </TooltipContent>
           </Tooltip>
           <Button onClick={handleToggleTestingPanel} variant="ghost">
-            View Testing Info
+            <Library className="mr-2 h-4 w-4" /> View Testing Info
           </Button>
         </div>
         <Button
