@@ -28,13 +28,25 @@ func BuildGitServerHandler(
 			db,
 			c,
 		)
+		logger.Debug(
+			"Git server request",
+			zap.String("provider", provider),
+			zap.String("subject", subject),
+			zap.String("challengeFolderName", challengeFolderName),
+			zap.String("repoId", repoId),
+			zap.String("path", suf),
+		)
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(router.BuildError(
 				"Invalid path",
 			))
 		}
-
 		if subject != c.Locals(middleware.SUBJECT_LOCAL_KEY).(string) {
+			logger.Debug(
+				"Subject mismatch",
+				zap.String("expected", subject),
+				zap.String("actual", c.Locals(middleware.SUBJECT_LOCAL_KEY).(string)),
+			)
 			return c.Status(fiber.StatusUnauthorized).JSON(router.BuildError(
 				"Subject mismatch",
 			))

@@ -17,6 +17,9 @@ func ProcessGitServerRequestPath(
 	c *fiber.Ctx,
 ) (string, string, string, string, string, error) {
 	path := string(c.Context().Request.URI().Path())
+	if strings.HasPrefix(path, "/api") {
+		path = strings.TrimPrefix(path, "/api")
+	}
 	path = strings.TrimPrefix(path, router.GIT_SERVER_PREFIX)
 	path = strings.TrimPrefix(path, "/")
 	splittedPath := strings.Split(path, "/")

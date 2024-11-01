@@ -166,6 +166,25 @@ func createRepositoryFiles(logger *zap.Logger, judgeConfig *jConfig.JudgeConfig,
 		)
 		return err
 	}
+	// git config receive.denyCurrentBranch updateInstead
+	cfg, err := repo.Config()
+	if err != nil {
+		logger.Error("Failed to get git config",
+			zap.String("repositoryPath", repositoryPath),
+			zap.Error(err))
+		return err
+	}
+
+	cfg.Raw.AddOption("receive", "", "denyCurrentBranch", "updateInstead")
+
+	err = repo.SetConfig(cfg)
+	if err != nil {
+		logger.Error("Failed to set git config",
+			zap.String("repositoryPath", repositoryPath),
+			zap.Error(err))
+		return err
+	}
+
 	// add a hook to the repository
 	hookPath := filepath.Join(repositoryPath, ".git", "hooks", "post-commit")
 	hookContent := fmt.Sprintf(`

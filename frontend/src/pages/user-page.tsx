@@ -67,8 +67,8 @@ export default function UserPage() {
     setIsChangingPassword(true);
     try {
       await axios.post(
-        `/api/user/password`,
-        { newPassword },
+        `/api/user/password?newPassword=${newPassword}`,
+        {},
         {
           headers: {
             Authorization: `Bearer ${token.token}`,

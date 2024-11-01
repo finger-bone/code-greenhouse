@@ -14,3 +14,7 @@ tasks:
     - find . -path "./frontend/node_modules" -prune -o -type l -exec rm -f {} +
     - task backend
     - task frontend
+  clean:
+    cmds:
+    - cd backend && task clean
+    - if [ -e "single-distro" ]; then cd single-distro && task clean; fi

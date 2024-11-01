@@ -45,7 +45,7 @@ func bootstrapHandler(
 	// /repo requires Bearer oauth token and Provider in header
 	// POST /repo/project create a new repo
 	// query parameters: startpoint, folder
-	// ALL /repo/git/{provider}/{subject}/{repoId} git server
+	// ALL /repo/git/{provider}/{subject}/{challengeFolderName}/{repoId} git server
 	repository.SetupRepositoryRouter(logger, config, db, &repoRouter)
 	testingRouter := app.Group("/testing")
 	// /testing requires Bearer oauth token and Provider in header

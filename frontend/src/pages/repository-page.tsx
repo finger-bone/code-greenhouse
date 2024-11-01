@@ -499,10 +499,6 @@ async function handleRequestTest(
   setDialogState: React.Dispatch<React.SetStateAction<DialogState>>
 ) {
   try {
-    // const resp = await axios.post(`/api/test/request`, {
-    //   repositoryId: repoId,
-    //   stage: currentStage,
-    // });
     const params = new URLSearchParams();
     params.append("repo", repoId || "");
     params.append("stage", currentStage.toString());
@@ -532,7 +528,7 @@ function handleCopyGitUrl(
   setDialogState: React.Dispatch<React.SetStateAction<DialogState>>
 ) {
   if (!repoData?.repository.startpoint) return;
-  const gitUrl = `${window.location.origin}/api/repo/git/${repoData?.repository.provider}/${repoData?.repository.subject}/${repoData?.repository.repositoryId}`;
+  const gitUrl = `${window.location.origin}/api/repo/git/${repoData?.repository.provider}/${repoData?.repository.subject}/${repoData.repository.challengeFolderName}/${repoData?.repository.repositoryId}`;
   navigator.clipboard.writeText(gitUrl);
   setDialogState({
     isOpen: true,
