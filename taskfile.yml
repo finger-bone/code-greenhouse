@@ -11,5 +11,6 @@ tasks:
     - sh ./create-frontend-link-for-single-distro.sh
   sd:
     cmds:
+    - find . -path "./frontend/node_modules" -prune -o -type l -exec rm -f {} +
     - task backend
     - task frontend

@@ -40,8 +40,8 @@ UserScopes = ["user:email"]
 Enabled = true
 [[auth.server]]
 ProviderName = "keycloak"
-ClientId = "dev"
-ClientSecret = "FVG9WtQwESurtR7RurDqSbrxZIXsNWrZ"
+ClientId = ""
+ClientSecret = ""
 UserScopes = ["openid"]
 Enabled = true
 AuthUrl = "http://localhost:8888/realms/test/protocol/openid-connect/auth"
