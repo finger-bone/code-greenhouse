@@ -1,0 +1,18 @@
+{
+    "includes": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.json",
+      "**/*.css",
+      "**/*.html"
+    ],
+    "typescript": {
+      "indentWidth": 2,
+      "lineWidth": 80
+    },
+    "plugins": [
+        "https://plugins.dprint.dev/typescript-0.93.1.wasm"
+    ]
+  }

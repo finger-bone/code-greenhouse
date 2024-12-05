@@ -1,0 +1,33 @@
+[basic]
+Author="Example Author"
+Source="Example"
+Title="LONG LONG NOTE"
+Description=[
+    "This is an example challenge.",
+    "It is used to demonstrate the use of attributes in a challenge."
+]
+
+[[startpoints]]
+Name="py"
+Description=[
+    "Python 3.10"
+]
+Root="startpoints/python"
+Dockerfile="dockerfile"
+
+[[stages]]
+Name="Stage 1"
+Description=[
+    "This is the first stage.",
+    "It is used to demonstrate the use of attributes in a challenge."
+]
+NoteFileOrPath="notes/1"
+NoteFileType="website"
+[[stages]]
+Name="Stage 2"
+Description=[
+    "This is the second stage.",
+    "It is used to demonstrate the use of attributes in a challenge."
+]
+NoteFileOrPath="notes/2"
+NoteFileType="markdown"

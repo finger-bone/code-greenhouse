@@ -1,0 +1,20 @@
+version: "3"
+
+tasks:
+  backend:
+    cmds:
+    - cd ./backend && task clean
+    - sh ./create-backend-link-for-single-distro.sh
+  frontend:
+    cmds:
+    - cd ./frontend && pnpm build
+    - sh ./create-frontend-link-for-single-distro.sh
+  sd:
+    cmds:
+    - find . -path "./frontend/node_modules" -prune -o -type l -exec rm -f {} +
+    - task backend
+    - task frontend
+  clean:
+    cmds:
+    - cd backend && task clean
+    - if [ -e "single-distro" ]; then cd single-distro && task clean; fi

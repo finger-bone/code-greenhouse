@@ -1,0 +1,49 @@
+[testing]
+PendingQueueSize = 1000
+PendingQueueTimeoutInMinute = 5
+MaxConcurrentWorkers = 4
+RunningTimeoutInMinute = 10
+DockerSocket = "unix:///var/run/docker.sock"
+TmpStorageFolder = "tmp"
+
+[server]
+HostPort = 8080
+HostAddr = ""
+
+[db]
+DbFile = "judge.db"
+
+[repo]
+StorageFolder = "example/repositories"
+
+[challenge]
+StorageFolder = "example/challenges"
+IgnorePatterns = ["_*", ".*"]
+MarkdownStyleSheetPath = "markdown.css"
+
+[logger]
+Level = "debug"
+Filename = "judge.log"
+MaxSizeInMegabytes = 10
+MaxBackups = 3
+MaxAgeInDays = 28
+Compress = true
+
+[auth]
+SingleUser = false
+AuthenticationTimeoutInSecond = 30
+[[auth.server]]
+ProviderName = "github"
+ClientId = ""
+ClientSecret = ""
+UserScopes = ["user:email"]
+Enabled = true
+[[auth.server]]
+ProviderName = "keycloak"
+ClientId = ""
+ClientSecret = ""
+UserScopes = ["openid"]
+Enabled = true
+AuthUrl = "http://localhost:8888/realms/test/protocol/openid-connect/auth"
+TokenUrl = "http://localhost:8888/realms/test/protocol/openid-connect/token"
+UserInfoUrl = "http://localhost:8888/realms/test/protocol/openid-connect/userinfo"
